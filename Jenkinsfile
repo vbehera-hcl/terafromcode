@@ -1,10 +1,5 @@
 pipeline {
-   // agent {
-   //     node {
-            // label 'ubuntu-slave'
-   //     }
-  //  }
-
+  
     options {
         buildDiscarder(
             logRotator(numToKeepStr:'10')
