@@ -6,7 +6,7 @@ data "terraform_remote_state" "cluster" {
   backend = "s3"
 
   config = {
-    bucket = "igcbs3terraform"
+    bucket = "igcbs3terraform-state-files"
     key    = "platform/terraform.tfstate"
     region = "us-east-2"
   }

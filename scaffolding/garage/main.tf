@@ -4,7 +4,7 @@
 
 terraform {
   backend "s3" {
-    bucket = "igcbs3terraform"
+    bucket = "igcbs3terraform-state-files"
     region = "us-east-2"
     key    = "garage/terraform.tfstate"
   }
@@ -34,7 +34,7 @@ data "terraform_remote_state" "net" {
   backend = "s3"
 
   config = {
-    bucket = "igcbs3terraform"
+    bucket = "igcbs3terraform-state-files"
     key    = "foundation/terraform.tfstate"
     region = "us-east-2"
   }
