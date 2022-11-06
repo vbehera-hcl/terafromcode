@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "igcbs3terraform-state-files"
-    region = "us-east-2"
+    region = "ap-south-1"
     key    = "terraform.tfstate"
   }
 

@@ -5,7 +5,7 @@ data "terraform_remote_state" "net" {
   config = {
     bucket = "igcbs3terraform-state-files"
     key    = "foundation/terraform.tfstate"
-    region = "us-east-2"
+    region = "ap-south-1"
   }
 }
 
@@ -15,7 +15,7 @@ data "terraform_remote_state" "iam" {
   config = {
     bucket = "igcbs3terraform-state-files"
     key    = "foundation/terraform.tfstate"
-    region = "us-east-2"
+    region = "ap-south-1"
   }
 }
 

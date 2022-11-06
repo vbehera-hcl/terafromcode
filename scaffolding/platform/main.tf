@@ -5,7 +5,7 @@
 terraform {
   backend "s3" {
     bucket = "igcbs3terraform-state-files"
-    region = "us-east-2"
+    region = "ap-south-1"
     key    = "platform/terraform.tfstate"
   }
 
@@ -100,7 +100,7 @@ variable "profile" {
 
 variable "aws_region" {
   type    = string
-  default = "us-east-2"
+  default = "ap-south-1"
 }
 
 variable "eks_version" {
