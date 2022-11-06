@@ -49,7 +49,7 @@ pipeline {
                     #!/bin/bash
                         cd ${infrastructure_layer}
                         sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} init
-                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.ssh:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} plan
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} plan
                         rm env.list
                     '''
                 }
@@ -72,7 +72,7 @@ pipeline {
                     #!/bin/bash
                         cd ${infrastructure_layer}
                         sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} init
-                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.ssh:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} apply --auto-approve
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} apply --auto-approve
                         rm env.list
                     '''
                     cleanWs()
