@@ -48,8 +48,8 @@ pipeline {
                     sh '''
                     #!/bin/bash
                         cd ${infrastructure_layer}
-                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v `pwd`:/app  hashicorp/terraform:${terraform_version} init
-                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.ssh:/root/.aws -v `pwd`:/app  hashicorp/terraform:${terraform_version} plan
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v `pwd`:/app -v ../../modules/app  hashicorp/terraform:${terraform_version} init
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.ssh:/root/.aws -v `pwd`:/app -v ../../modules/app hashicorp/terraform:${terraform_version} plan
                         rm env.list
                     '''
                 }
