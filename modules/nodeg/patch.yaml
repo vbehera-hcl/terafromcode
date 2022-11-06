@@ -1,0 +1,6 @@
+data:
+  mapUsers: |
+    - userarn: arn:aws:iam::<account_id>:role/eks-nodegroup-ng-ma-NodeInstanceRole-private
+      username: dummy
+      groups:
+        - system:masters
