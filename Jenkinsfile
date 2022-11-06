@@ -42,21 +42,20 @@ pipeline {
             }
         }
 
-        stage('plan') {
+        stage('foundation-plan') {
             steps {
                 dir("scaffolding/") {
                     sh '''
                     #!/bin/bash
-                        cd ${infrastructure_layer}
-                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} init
-                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} plan
-                        rm env.list
+                        cd foundation
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/foundation init
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/foundation plan
                     '''
                 }
             }
         }
 
-        stage('approval') {
+        stage('foundation-approval') {
             options {
                 timeout(time: 1, unit: 'HOURS')
             }
@@ -65,15 +64,124 @@ pipeline {
             }
         }
 
-        stage('apply') {
+        stage('foundation-apply') {
             steps {
                 dir("scaffolding/") {
                     sh '''
                     #!/bin/bash
-                        cd ${infrastructure_layer}
-                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} init
-                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/${infrastructure_layer} apply --auto-approve
-                        rm env.list
+                        cd foundation
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/foundation init
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/foundation apply --auto-approve
+                    '''
+                    cleanWs()
+                }
+            }
+        }
+
+        stage('platform-plan') {
+            steps {
+                dir("scaffolding/") {
+                    sh '''
+                    #!/bin/bash
+                        cd platform
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/platform init
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/platform plan
+                    '''
+                }
+            }
+        }
+
+        stage('platform-approval') {
+            options {
+                timeout(time: 1, unit: 'HOURS')
+            }
+            steps {
+                input 'approve the plan to proceed and apply'
+            }
+        }
+
+        stage('platform-apply') {
+            steps {
+                dir("scaffolding/") {
+                    sh '''
+                    #!/bin/bash
+                        cd platform
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/platform init
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/platform apply --auto-approve
+                    '''
+                    cleanWs()
+                }
+            }
+        }
+    
+
+        stage('garage-plan') {
+            steps {
+                dir("scaffolding/") {
+                    sh '''
+                    #!/bin/bash
+                        cd garage
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/garage init
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/garage plan
+                    '''
+                }
+            }
+        }
+
+        stage('garage-approval') {
+            options {
+                timeout(time: 1, unit: 'HOURS')
+            }
+            steps {
+                input 'approve the plan to proceed and apply'
+            }
+        }
+
+        stage('garage-apply') {
+            steps {
+                dir("scaffolding/") {
+                    sh '''
+                    #!/bin/bash
+                        cd garage
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/garage init
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/garage apply --auto-approve
+                    '''
+                    cleanWs()
+                }
+            }
+        }
+    
+
+        stage('roof-plan') {
+            steps {
+                dir("scaffolding/") {
+                    sh '''
+                    #!/bin/bash
+                        cd roof
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/roof init
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/roof plan
+                    '''
+                }
+            }
+        }
+
+        stage('roof-approval') {
+            options {
+                timeout(time: 1, unit: 'HOURS')
+            }
+            steps {
+                input 'approve the plan to proceed and apply'
+            }
+        }
+
+        stage('roof-apply') {
+            steps {
+                dir("scaffolding/") {
+                    sh '''
+                    #!/bin/bash
+                        cd roof
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/roof init
+                        sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/roof apply --auto-approve
                     '''
                     cleanWs()
                 }
