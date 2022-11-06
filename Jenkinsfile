@@ -1,9 +1,9 @@
 pipeline {
-    agent {
-        node {
-            label 'ubuntu-slave'
-        }
-    }
+   // agent {
+   //     node {
+            // label 'ubuntu-slave'
+   //     }
+  //  }
 
     options {
         buildDiscarder(
