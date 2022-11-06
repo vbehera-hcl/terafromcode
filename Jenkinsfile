@@ -9,7 +9,7 @@ pipeline {
         buildDiscarder(
             logRotator(numToKeepStr:'10')
         )
-        ansiColor('xterm')
+        // ansiColor('xterm')
     }
 
     parameters {
