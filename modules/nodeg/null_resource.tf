@@ -8,7 +8,7 @@ resource "null_resource" "gen_cluster_auth" {
     when        = create
     interpreter = ["/bin/bash", "-c"]
     command     = <<EOT
-        ./c9-auth.sh
+        ${path.module}/c9-auth.sh
         echo "************************************************************************************"
      EOT
   }
