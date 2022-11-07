@@ -34,9 +34,9 @@ provider "aws" {
 ################################################################################
 # MODULES
 ################################################################################
-data "aws_eks_cluster" "cluster" {
-  name = var.cluster-name
-}
+#data "aws_eks_cluster" "cluster" {
+#  name = var.cluster-name
+#}
 
 data "aws_subnet" "priv1" {
   filter {
