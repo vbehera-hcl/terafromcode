@@ -12,18 +12,6 @@ pipeline {
     }
 
     parameters {
-//        choice(
-//            name: 'infrastructure_layer',
-//            choices: [
-//                "Select infrastructure to create",
-//                "foundation",
-//                "platform",
-//                "garage",
-//                "roof"
-//            ],
-//            description: 'Select Infrastructure Layer'
-//        )
-
         choice(
             name: 'terraform_version',
             choices: [
@@ -55,15 +43,6 @@ pipeline {
             }
         }
 
-       // stage('foundation-approval') {
-         //   options {
-           //     
-             //   sleep(time: 10, unit: 'SECONDS')
-           // }
-            //steps {
-         //       input 'approve the plan to proceed and apply'
-          //  }
-       // }
 
         stage('foundation-apply') {
             steps {
@@ -91,14 +70,6 @@ pipeline {
             }
         }
 
- //       stage('platform-approval') {
- //           options {
- //               sleep(time: 10, unit: 'SECONDS')
- //           }
- //           steps {
- //               input 'approve the plan to proceed and apply'
- //           }
- //       }
 
         stage('platform-apply') {
             steps {
@@ -127,15 +98,6 @@ pipeline {
             }
         }
 
-//        stage('garage-approval') {
- //           options {
- //               sleep(time: 10, unit: 'SECONDS')
- //           }
- //           steps {
- //               input 'approve the plan to proceed and apply'
- //           }
- //       }
-
         stage('garage-apply') {
             steps {
                 dir("scaffolding/") {
@@ -163,14 +125,6 @@ pipeline {
             }
         }
 
-//        stage('roof-approval') {
-//            options {
-//                sleep(time: 10, unit: 'SECONDS')
-//            }
-//            steps {
-//                input 'approve the plan to proceed and apply'
-//            }
-//        }
 
         stage('roof-apply') {
             steps {
