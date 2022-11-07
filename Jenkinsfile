@@ -12,17 +12,17 @@ pipeline {
     }
 
     parameters {
-        choice(
-            name: 'infrastructure_layer',
-            choices: [
-                "Select infrastructure to create",
-                "foundation",
-                "platform",
-                "garage",
-                "roof"
-            ],
-            description: 'Select Infrastructure Layer'
-        )
+//        choice(
+//            name: 'infrastructure_layer',
+//            choices: [
+//                "Select infrastructure to create",
+//                "foundation",
+//                "platform",
+//                "garage",
+//                "roof"
+//            ],
+//            description: 'Select Infrastructure Layer'
+//        )
 
         choice(
             name: 'terraform_version',
@@ -57,7 +57,7 @@ pipeline {
 
         stage('foundation-approval') {
             options {
-                timeout(time: 1, unit: 'HOURS')
+                timeout(time: 1, unit: 'MINUTES')
             }
             steps {
                 input 'approve the plan to proceed and apply'
@@ -93,7 +93,7 @@ pipeline {
 
         stage('platform-approval') {
             options {
-                timeout(time: 1, unit: 'HOURS')
+                timeout(time: 1, unit: 'MINUTES')
             }
             steps {
                 input 'approve the plan to proceed and apply'
@@ -130,7 +130,7 @@ pipeline {
 
         stage('garage-approval') {
             options {
-                timeout(time: 1, unit: 'HOURS')
+                timeout(time: 1, unit: 'MINUTES')
             }
             steps {
                 input 'approve the plan to proceed and apply'
@@ -167,7 +167,7 @@ pipeline {
 
         stage('roof-approval') {
             options {
-                timeout(time: 1, unit: 'HOURS')
+                timeout(time: 1, unit: 'MINUTES')
             }
             steps {
                 input 'approve the plan to proceed and apply'
