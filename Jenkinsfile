@@ -37,9 +37,9 @@ pipeline {
                     #!/bin/bash
                         cd foundation
                        #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/foundation init
-                        terraform -chdir=scaffolding/foundation init
+                        terraform  init
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/foundation plan
-                        terraform -chdir=scaffolding/foundation plan
+                        terraform  plan
                     '''
                 }
             }
@@ -53,9 +53,9 @@ pipeline {
                     #!/bin/bash
                         cd foundation
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/foundation init
-                        terraform -chdir=scaffolding/foundation init
+                        terraform  init
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/foundation apply --auto-approve
-                        terraform -chdir=scaffolding/foundation apply --auto-approve
+                        terraform  apply --auto-approve
                     '''
                 }
             }
@@ -68,9 +68,9 @@ pipeline {
                     #!/bin/bash
                         cd platform
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/platform init
-                        terraform -chdir=scaffolding/platform init
+                        terraform  init
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/platform plan
-                        terraform -chdir=scaffolding/platform plan
+                        terraform  plan
                     '''
                 }
             }
@@ -84,9 +84,9 @@ pipeline {
                     #!/bin/bash
                         cd platform
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/platform init
-                        terraform -chdir=scaffolding/platform init
+                        terraform  init
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/platform apply --auto-approve
-                        terraform -chdir=scaffolding/platform apply --auto-approve
+                        terraform  apply --auto-approve
                     '''
                 }
             }
@@ -100,9 +100,9 @@ pipeline {
                     #!/bin/bash
                         cd garage
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/garage init
-                        terraform -chdir=scaffolding/garage init
+                        terraform  init
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/garage plan
-                        terraform -chdir=scaffolding/garage plan
+                        terraform  plan
                     '''
                 }
             }
@@ -115,9 +115,9 @@ pipeline {
                     #!/bin/bash
                         cd garage
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/garage init
-                        terraform -chdir=scaffolding/garage init
+                        terraform  init
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/garage apply --auto-approve
-                        terraform -chdir=scaffolding/garage apply --auto-approve
+                        terraform  apply --auto-approve
                     '''
                 }
             }
@@ -131,9 +131,9 @@ pipeline {
                     #!/bin/bash
                         cd roof
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/roof init
-                        terraform -chdir=scaffolding/roof init
+                        terraform  init
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/roof plan
-                        terraform -chdir=scaffolding/roof plan
+                        terraform  plan
                     '''
                 }
             }
@@ -147,9 +147,9 @@ pipeline {
                     #!/bin/bash
                         cd roof
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app  hashicorp/terraform:${terraform_version} -chdir=scaffolding/roof init
-                        terraform -chdir=scaffolding/roof init
+                        terraform  init
                         #sudo docker run -w /app -v ~/.ssh:/root/.ssh -v ~/.aws:/root/.aws -v $WORKSPACE:/app hashicorp/terraform:${terraform_version} -chdir=scaffolding/roof apply --auto-approve
-                        terraform -chdir=scaffolding/roof apply --auto-approve
+                        terraform  apply --auto-approve
                     '''
                     cleanWs()
                 }
