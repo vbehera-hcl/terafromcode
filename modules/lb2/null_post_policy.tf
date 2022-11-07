@@ -14,7 +14,7 @@ resource "null_resource" "post-policy" {
         echo "$reg $cn $acc"
         ${path.module}/post-policy.sh $reg $cn $acc
         echo "reannotate nodes"
-        ${path.module}/script/reannotate-nodes.sh $cn
+        ${path.module}/../../script/reannotate-nodes.sh $cn
         echo "done"
      EOT
   }
