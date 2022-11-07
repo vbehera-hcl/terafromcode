@@ -55,15 +55,15 @@ pipeline {
             }
         }
 
-        stage('foundation-approval') {
-            options {
-                
-                sleep(time: 10, unit: 'SECONDS')
-            }
-            steps {
-                input 'approve the plan to proceed and apply'
-            }
-        }
+       // stage('foundation-approval') {
+         //   options {
+           //     
+             //   sleep(time: 10, unit: 'SECONDS')
+           // }
+            //steps {
+         //       input 'approve the plan to proceed and apply'
+          //  }
+       // }
 
         stage('foundation-apply') {
             steps {
@@ -92,14 +92,14 @@ pipeline {
             }
         }
 
-        stage('platform-approval') {
-            options {
-                sleep(time: 10, unit: 'SECONDS')
-            }
-            steps {
-                input 'approve the plan to proceed and apply'
-            }
-        }
+ //       stage('platform-approval') {
+ //           options {
+ //               sleep(time: 10, unit: 'SECONDS')
+ //           }
+ //           steps {
+ //               input 'approve the plan to proceed and apply'
+ //           }
+ //       }
 
         stage('platform-apply') {
             steps {
@@ -129,14 +129,14 @@ pipeline {
             }
         }
 
-        stage('garage-approval') {
-            options {
-                sleep(time: 10, unit: 'SECONDS')
-            }
-            steps {
-                input 'approve the plan to proceed and apply'
-            }
-        }
+//        stage('garage-approval') {
+ //           options {
+ //               sleep(time: 10, unit: 'SECONDS')
+ //           }
+ //           steps {
+ //               input 'approve the plan to proceed and apply'
+ //           }
+ //       }
 
         stage('garage-apply') {
             steps {
@@ -166,14 +166,14 @@ pipeline {
             }
         }
 
-        stage('roof-approval') {
-            options {
-                sleep(time: 10, unit: 'SECONDS')
-            }
-            steps {
-                input 'approve the plan to proceed and apply'
-            }
-        }
+//        stage('roof-approval') {
+//            options {
+//                sleep(time: 10, unit: 'SECONDS')
+//            }
+//            steps {
+//                input 'approve the plan to proceed and apply'
+//            }
+//        }
 
         stage('roof-apply') {
             steps {
