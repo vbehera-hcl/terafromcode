@@ -16,9 +16,9 @@ resource "null_resource" "cidr" {
         cn=$(echo ${data.aws_eks_cluster.eks_cluster.name})
         echo $az1 $az2 $az3 $sub1 $sub2 $sub3 $cn
         echo -e "\x1B[35mCycle nodes for custom CNI setting (takes a few minutes) ......\x1B[0m"
-        ${path.module}/script/cni-cycle-nodes.sh $cn
+        ${path.module}/../../script/cni-cycle-nodes.sh $cn
         echo -e "\x1B[33mAnnotate nodes ......\x1B[0m"
-        ${path.module}/script/annotate-nodes.sh $az1 $az2 $az3 $sub1 $sub2 $sub3 $cn
+        ${path.module}/../../script/annotate-nodes.sh $az1 $az2 $az3 $sub1 $sub2 $sub3 $cn
         echo -e "\x1B[32mShould see coredns on 100.64.x.y addresses ......\x1B[0m"
         echo -e "\x1B[32mkubectl get pods -A -o wide | grep coredns\x1B[0m"   
      EOT
