@@ -57,7 +57,8 @@ pipeline {
 
         stage('foundation-approval') {
             options {
-                sleep time: 10, unit: 'SECONDS'
+                
+                sleep(time: 10, unit: 'SECONDS')
             }
             steps {
                 input 'approve the plan to proceed and apply'
@@ -93,7 +94,7 @@ pipeline {
 
         stage('platform-approval') {
             options {
-                sleep time: 10, unit: 'SECONDS'
+                sleep(time: 10, unit: 'SECONDS')
             }
             steps {
                 input 'approve the plan to proceed and apply'
@@ -130,7 +131,7 @@ pipeline {
 
         stage('garage-approval') {
             options {
-                sleep time: 10, unit: 'SECONDS'
+                sleep(time: 10, unit: 'SECONDS')
             }
             steps {
                 input 'approve the plan to proceed and apply'
@@ -167,7 +168,7 @@ pipeline {
 
         stage('roof-approval') {
             options {
-                sleep time: 10, unit: 'SECONDS'
+                sleep(time: 10, unit: 'SECONDS')
             }
             steps {
                 input 'approve the plan to proceed and apply'
