@@ -40,5 +40,5 @@ resource "aws_eks_node_group" "ng1" {
 # Instance Key
 resource "aws_key_pair" "eksprivatecluster" {
   key_name   = var.ssh_key_name
-  public_key = file("~/.ssh/id_rsa.pub")
+  public_key = file("/root/.ssh/id_rsa.pub")
 }
